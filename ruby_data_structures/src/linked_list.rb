@@ -11,21 +11,31 @@ class LinkedList
       @tail = @head = MakeNode.new(value)
     else
       @tail.next = MakeNode.new(value)
+      @tail.next.previous = @tail
       @tail = @tail.next
     end
   end
 
-  # def remove_tail
-  # end
+  def remove_tail
+    temp = @tail.value
+    if @tail.previous
+      @tail.previous.next = nil
+      @tail = @tail.previous
+    else
+      @tail = @head = nil
+    end
+    return temp
+  end
 
   # def contains
   # end
 end
 
 class MakeNode
-  attr_accessor :value, :next
+  attr_accessor :value, :next, :previous
   def initialize (value)
     @value = value
     @next = nil
+    @previous = nil
   end
 end
