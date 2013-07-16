@@ -37,4 +37,12 @@ describe Stack do
   		@stack.remove.should == 'first item'
   	end
   end
+
+  describe "#contains" do
+    it "should return true if an item in the collection has passed in value" do
+      @stack.add('real_value')
+      @stack.contains('real_value').should == true
+      @stack.contains('fake_value').should == false
+    end
+  end
 end

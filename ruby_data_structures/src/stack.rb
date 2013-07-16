@@ -21,4 +21,8 @@ class Stack
       @storage[@length]
     end
   end
+
+  def contains(value)
+    @storage.include?(value)
+  end
 end
