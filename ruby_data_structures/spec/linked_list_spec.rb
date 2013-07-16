@@ -17,6 +17,7 @@ describe LinkedList do
       @linked.tail.value.should == 'test'
     end
   end
+
   describe "#remove_tail" do
     it "if there is only one value, should remove node, return value, set head and tail to nil" do
       @linked.add_tail('test')
@@ -31,6 +32,19 @@ describe LinkedList do
       @linked.remove_tail.should == 'second'
       @linked.tail.value == 'first'
       @linked.remove_tail.should == 'first'
+    end
+  end
+
+  describe "#contains" do
+    it "it should return true if the passed in value matches a value in the list, false if there is no match" do
+      @linked.add_tail('value1')
+      @linked.add_tail('value2')
+      @linked.add_tail('value3')
+
+      @linked.contains('value1').should == true
+      @linked.contains('value2').should == true
+      @linked.contains('value3').should == true
+      @linked.contains('value4').should == false
     end
   end
 end

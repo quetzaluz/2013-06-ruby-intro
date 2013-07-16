@@ -27,8 +27,16 @@ class LinkedList
     return temp
   end
 
-  # def contains
-  # end
+  def contains (val)
+    if (@head and @tail)
+      current = @head
+      while(current)
+        return true if current.value == val
+        current = current.next
+        return false if current == nil
+      end
+    end
+  end
 end
 
 class MakeNode
