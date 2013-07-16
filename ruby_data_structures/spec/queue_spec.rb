@@ -21,4 +21,19 @@ describe Queue do
       @queue.length.should == 2
     end
   end
+
+  describe "#remove" do
+    it "should remove an item" do
+      @queue.add('test')
+      @queue.length.should == 1
+      @queue.remove
+      @queue.length.should == 0
+    end
+    it "should remove items in first-in-first-out order" do
+      @queue.add('first')
+      @queue.add('second')
+      @queue.remove.should == 'first'
+      @queue.remove.should == 'second'
+    end
+  end
 end

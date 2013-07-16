@@ -12,4 +12,12 @@ class Queue
     @storage[@length] = value
     @length += 1
   end
+
+  def remove
+    #Should remove in FIFO order
+    unless @length <= 0
+      @length -= 1
+      @storage.shift
+    end
+  end
 end
