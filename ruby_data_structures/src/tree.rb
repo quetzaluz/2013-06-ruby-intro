@@ -11,9 +11,16 @@ class Tree
   end
 
   def remove_child
+
   end
 
-  def contains
+  def contains(value)
+    result = false
+    for child in @children
+      result = true if child.value == value
+      result = child.contains(value) if child.children and !result
+    end
+    return result
   end
 
 end
