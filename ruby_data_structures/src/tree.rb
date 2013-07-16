@@ -6,7 +6,8 @@ class Tree
     @children = []
   end
 
-  def add_child
+  def add_child (value)
+    @children << Tree.new(value)
   end
 
   def remove_child
