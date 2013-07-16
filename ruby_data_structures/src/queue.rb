@@ -20,4 +20,7 @@ class Queue
       @storage.shift
     end
   end
+  def contains(value)
+    @storage.include?(value)
+  end
 end

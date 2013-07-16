@@ -36,4 +36,11 @@ describe Queue do
       @queue.remove.should == 'second'
     end
   end
+  describe "#contains" do
+    it "should return true if an item in the collection has passed in value" do
+      @queue.add('real_value')
+      @queue.contains('real_value').should == true
+      @queue.contains('fake_value').should == false
+    end
+  end
 end
