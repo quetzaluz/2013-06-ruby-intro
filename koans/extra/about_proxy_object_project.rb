@@ -13,12 +13,38 @@ require File.expand_path(File.dirname(__FILE__) + '/edgecase')
 # of the Proxy class is given in the AboutProxyObjectProject koan.
 
 class Proxy
+
+  attr_accessor :copy, :messages, :called
+
   def initialize(target_object)
-    @object = target_object
-    # ADD MORE CODE HERE
+    # Below the messages and times_called arrays are redundant. Created both because the spec expected a simple messages array, but I found I needed a hashtable to best manage the number_of_times_called spec
+    @copy = target_object.clone()
+    @messages = []
+    @times_called = {}
+  end
+  
+  def method_missing(name, *args, &block)
+    # Call a message and record that it was called to messages array. Record times called as well.
+    @messages << name
+    unless @times_called[name]
+      @times_called[name] = 1
+    else @times_called[name] += 1
+    end
+    @copy.send(name, *args, &block)
   end
 
-  # WRITE CODE HERE
+  def called? (name)
+    # Search messages array and return a boolean telling whether that method has been called before
+    for message in @messages
+      return true if message === name
+    end
+    return false
+  end
+
+  def number_of_times_called (name)
+    return @times_called[name] if @times_called[name]
+    return 0 unless @times_called[name]
+  end
 end
 
 # The proxy object should pass the following Koan:
