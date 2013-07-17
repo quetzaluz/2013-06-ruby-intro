@@ -16,7 +16,7 @@
 def triangle(a, b, c)
   for side in [a,b,c]
   	if side <= 0 
-  		raise RuntimeError, "Side must be a positive integer!"
+  		raise TriangleError, "Side must be a positive integer!"
   	end
   end
   if a == b && b == c 
