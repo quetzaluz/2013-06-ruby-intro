@@ -17,6 +17,8 @@ def triangle(a, b, c)
   for side in [a,b,c]
   	if side <= 0 
   		raise TriangleError, "Side must be a positive integer!"
+  	elsif side >= (a+b+c - side)
+  		raise TriangleError, "A side cannot be larger than the sum of the other two sides!"
   	end
   end
   if a == b && b == c 
