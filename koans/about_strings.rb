@@ -143,15 +143,14 @@ EOS
 
   def test_you_can_get_a_single_character_from_a_string
     string = "Bacon, lettuce and tomato"
-    assert_equal "a", string[1]
-
+    assert_equal 97, string[1]
     # Surprised?
   end
 
   in_ruby_version("1.8") do
     def test_in_ruby_1_8_single_characters_are_represented_by_integers
-      assert_equal 1, ?a
-      assert_equal false, ?a == 97
+      assert_equal 97, ?a
+      assert_equal true, ?a == 97
 
       assert_equal true, ?b == (?a + 1)
     end
